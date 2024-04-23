@@ -1,9 +1,11 @@
 import React from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddCoffee = () => {
+const UpdateData = () => {
+  const loaderData = useLoaderData();
+  console.log(loaderData);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,8 +18,8 @@ const AddCoffee = () => {
     const photoURL = form.photoURL.value;
     const coffee = { name, chef, supplie, taste, category, details, photoURL };
 
-    fetch("http://localhost:3000/coffees", {
-      method: "POST",
+    fetch(`http://localhost:3000/coffees/${loaderData._id}`, {
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
@@ -26,7 +28,7 @@ const AddCoffee = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "success!",
             text: "Data added Successfully",
@@ -47,7 +49,7 @@ const AddCoffee = () => {
       <div className="bg-[#F4F3F0] p-16 mt-10">
         <div className="space-y-7">
           <h1 className="text-center text-4xl font-bold tracking-tight text-[#374151]">
-            Add New Coffee
+            Update Existing Data
           </h1>
           <p className="w-[80%] mx-auto rale-way text-center">
             It is a long established fact that a reader will be distraceted by
@@ -73,6 +75,7 @@ const AddCoffee = () => {
                     id="firstname"
                     type="text"
                     name="name"
+                    defaultValue={loaderData.name}
                     placeholder="Enter Coffee name"
                     className="w-full p-2 rale-way text-sm outline-0  "
                   />
@@ -160,7 +163,7 @@ const AddCoffee = () => {
                 <input
                   className="bg-[#D2B48C] p-1 w-full font-bold "
                   type="submit"
-                  value="Add Coffee"
+                  value="Update Coffee"
                 />
               </div>
             </fieldset>
@@ -171,4 +174,4 @@ const AddCoffee = () => {
   );
 };
 
-export default AddCoffee;
+export default UpdateData;
