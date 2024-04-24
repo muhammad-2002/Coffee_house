@@ -18,13 +18,16 @@ const UpdateData = () => {
     const photoURL = form.photoURL.value;
     const coffee = { name, chef, supplie, taste, category, details, photoURL };
 
-    fetch(`http://localhost:3000/coffees/${loaderData._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(coffee),
-    })
+    fetch(
+      `https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/coffees/${loaderData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(coffee),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

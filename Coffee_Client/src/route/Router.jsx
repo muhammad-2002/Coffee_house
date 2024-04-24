@@ -13,7 +13,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:3000/coffees"),
+        loader: () =>
+          fetch(
+            "https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/coffees"
+          ),
         element: <Home></Home>,
       },
       {
@@ -23,7 +26,9 @@ const router = createBrowserRouter([
       {
         path: "/update-data/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params.id}`),
+          fetch(
+            `https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/coffees/${params.id}`
+          ),
         element: <UpdateData></UpdateData>,
       },
       {
@@ -36,7 +41,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/user-table",
-        loader: () => fetch("http://localhost:3000/user"),
+        loader: () =>
+          fetch(
+            "https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/user"
+          ),
         element: <UserTable></UserTable>,
       },
     ],

@@ -24,7 +24,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
     const database = client.db("CoffeeDB");
     const coffeeCollection = database.collection("coffeeCollection");
     const userCollection = database.collection("userCollection");
@@ -133,7 +133,9 @@ app.delete('/user/:id',async(req,res)=>{
 }
 run().catch(console.log);
 
-
+app.get('/',async(req,res)=>{
+  res.send("somosha")
+})
 
 
 //listen app

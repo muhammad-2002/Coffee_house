@@ -19,9 +19,12 @@ const CofeeCard = ({ c, setCoffee, coffees }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/coffees/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/coffees/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -37,13 +40,16 @@ const CofeeCard = ({ c, setCoffee, coffees }) => {
     });
   };
   const handleEdit = (_id) => {
-    fetch(`http://localhost:3000/coffees/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body,
-    })
+    fetch(
+      `https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/coffees/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body,
+      }
+    )
       .then((res) => res.json())
       .then((data) => console.log(data));
   };

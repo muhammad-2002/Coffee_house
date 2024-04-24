@@ -21,9 +21,12 @@ const UserTable = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/user/${userId}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/user/${userId}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

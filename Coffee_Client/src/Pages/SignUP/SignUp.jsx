@@ -14,13 +14,16 @@ const SignUp = () => {
       .then((result) => {
         const lastSignInTime = result.user.metadata.lastSignInTime;
         const user = { email, lastSignInTime };
-        fetch("http://localhost:3000/user", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        })
+        fetch(
+          "https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/user",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {

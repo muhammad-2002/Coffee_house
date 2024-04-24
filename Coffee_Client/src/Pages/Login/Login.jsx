@@ -18,13 +18,16 @@ const Login = () => {
           email,
         };
 
-        fetch(`http://localhost:3000/user`, {
-          method: "PATCH",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        })
+        fetch(
+          `https://coffee-house-quxv1znrs-masums-projects-ab040a05.vercel.app/user`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          }
+        )
           .then((res) => res.json())
           .then((data) => console.log(data));
       })
